@@ -6,32 +6,13 @@
   .controller('DriversController', DriversController);
 
   /** @ngInject */
-  function DriversController() {
+  function DriversController(ergastAPI) {
     var vm = this;
+    vm.filterName = null;
+    vm.driversList = [];
 
-    vm.driversList = [
-      {
-        Driver: {
-          givenName: 'Sebastian',
-          familyName: 'Vettel'
-        },
-        points: 322,
-        nationality: "German",
-        Constructors: [
-          {name: "Red Bull"}
-        ]
-      },
-      {
-        Driver: {
-          givenName: 'Fernando',
-          familyName: 'Alonso'
-        },
-        points: 207,
-        nationality: "Spanish",
-        Constructors: [
-          {name: "Ferrari"}
-        ]
-      }
-    ];
+    ergastAPI.getDrivers().success(function (response) {
+        vm.driversList = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    });
   }
 })();
