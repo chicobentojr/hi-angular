@@ -19,6 +19,12 @@
         templateUrl: 'app/drivers/drivers.html',
         controller: 'DriversController',
         controllerAs: 'drivers'
+      })
+      .state('driver', {
+        url: '/drivers/:id',
+        templateUrl: 'app/driver/driver.html',
+        controller: 'DriverController',
+        controllerAs: 'driver'
       });
 
     $urlRouterProvider.otherwise('/');

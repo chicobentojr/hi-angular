@@ -9,7 +9,7 @@
   function DriversController(ergastAPI) {
     var vm = this;
 
-    vm.filterName = null;
+    vm.nameFilter = null;
     vm.driversList = [];
 
     vm.searchFilter = function (driver) {
