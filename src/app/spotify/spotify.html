@@ -7,11 +7,11 @@
   <div layout-gt-sm="row">
     <md-input-container class="md-block" flex-gt-sm>
       <label>Search Here</label>
-      <input ng-blur="spotify.searchChange()" ng-model="spotify.search" />
+      <input ng-model="spotify.search" ng-blur="spotify.searchChange()" />
     </md-input-container>
     <md-input-container class="md-block" flex-gt-sm>
       <label>Search Type</label>
-      <md-select ng-model="spotify.searchType">
+      <md-select ng-model="spotify.searchType" ng-change="spotify.searchChange()">
         <md-option ng-repeat="type in spotify.searchTypes" value="{{type}}">
           {{type}}
         </md-option>
@@ -22,12 +22,12 @@
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
   <md-list ng-show="spotify.loaded">
-    <md-list-item class="md-3-line" ng-repeat="artist in spotify.artists">
-      <img ng-src="{{artist.images[0].url}}" class="md-avatar" alt="{{artist.name}}" />
+    <md-list-item class="md-3-line" ng-repeat="result in spotify.results">
+      <img ng-src="{{result.image}}" class="md-avatar" alt="{{result.name}}" />
       <div class="md-list-item-text" layout="column">
-        <h3 class="md-headline">{{artist.name}}</h3>
-        <h4>Popularity: {{artist.popularity}}</h4>
-        <md-button ng-href="{{artist.external_urls.spotify}}" class="md-primary">Open Spotify</md-button>
+        <h3 class="md-headline">{{result.name}}</h3>
+        <h4>{{result.detail}}</h4>
+        <md-button ng-href="{{result.url}}" class="md-primary">Open Spotify</md-button>
       </div>
     </md-list-item>
   </md-list>

@@ -10,15 +10,15 @@
 
     vm.searchType = 'Artist';
     vm.searchTypes = ['Artist', 'Track', 'Album'];
-    vm.artists = [];
+    vm.results = [];
     vm.loaded = true;
 
     vm.searchChange = function(){
       vm.loaded = false;
-      spotifyAPI.getArtists(vm.search).success(function (response){
-        vm.artists = response.artists.items;
+      spotifyAPI.getResults(vm.search,vm.searchType,function (results){
+        vm.results = results;
         vm.loaded = true;
       });
     };
-  }
+  };
 })();
