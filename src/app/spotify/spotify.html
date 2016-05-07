@@ -1,0 +1,55 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 class="md-flex">Spotify Search API</h2>
+  </div>
+</md-toolbar>
+<md-content flex layout-padding>
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Search Here</label>
+      <input ng-blur="spotify.searchChange()" ng-model="spotify.search" />
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Search Type</label>
+      <md-select ng-model="spotify.searchType">
+        <md-option ng-repeat="type in spotify.searchTypes" value="{{type}}">
+          {{type}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div ng-hide="spotify.loaded" layout="row" layout-sm="column" layout-align="space-around">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+  <md-list ng-show="spotify.loaded">
+    <md-list-item class="md-3-line" ng-repeat="artist in spotify.artists">
+      <img ng-src="{{artist.images[0].url}}" class="md-avatar" alt="{{artist.name}}" />
+      <div class="md-list-item-text" layout="column">
+        <h3 class="md-headline">{{artist.name}}</h3>
+        <h4>Popularity: {{artist.popularity}}</h4>
+        <md-button ng-href="{{artist.external_urls.spotify}}" class="md-primary">Open Spotify</md-button>
+      </div>
+    </md-list-item>
+  </md-list>
+</md-content>
+
+
+<!-- <md-grid-list
+md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="4"
+md-row-height-gt-md="1:1" md-row-height="2:2"
+md-gutter="12px" md-gutter-gt-sm="8px">
+<md-grid-tile ng-repeat="artist in spotify.artists">
+<md-card>
+<img ng-src="{{artist.images[0].url}}" class="md-card-image" alt="{{artist.name}}" />
+<md-card-title>
+<md-card-title-text>
+<span class="md-headline">{{artist.name}}</span>
+<span class="md-subhead">Artist</span>
+</md-card-title-text>
+</md-card-title>
+<md-card-actions layout="row" layout-align="end center">
+<md-button aria-label="Search">Open spotify</md-button>
+</md-card-actions>
+</md-card>
+</md-grid-tile>
+</md-grid-list> -->

@@ -37,9 +37,9 @@
   font-feature-settings: 'liga';
 }
 
-html {
+/*html {
   font-family: 'Roboto Slab', serif;
-}
+}*/
 
 [layout=row] {
   flex-direction: row;
