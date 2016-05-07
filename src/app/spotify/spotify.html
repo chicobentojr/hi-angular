@@ -21,6 +21,7 @@
   <div ng-hide="spotify.loaded" layout="row" layout-sm="column" layout-align="space-around">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>
+<md-subheader ng-show="spotify.resultsEmpty" class="md-primary">None {{spotify.searchType}} was found</md-subheader>
   <md-list ng-show="spotify.loaded">
     <md-list-item class="md-3-line" ng-repeat="result in spotify.results">
       <img ng-src="{{result.image}}" class="md-avatar" alt="{{result.name}}" />
